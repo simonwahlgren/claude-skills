@@ -27,7 +27,7 @@ This skill expects two inputs: a **title** and a **path to a markdown file**.
 
 3. **Check for a previously linked doc** — search Google Drive for a doc with the exact same title:
    ```bash
-   gws drive files list --params '{"q": "name = \"<title>\" and mimeType = \"application/vnd.google-apps.document\" and trashed = false", "fields": "files(id,name,createdTime)"}'
+   gws drive files list --params '{"q": "name = \"<title>\" and mimeType = \"application/vnd.google-apps.document\" and trashed = false", "fields": "files(id,name,createdTime)", "supportsAllDrives": true, "includeItemsFromAllDrives": true}'
    ```
    - If a matching doc is found, ask the user:
      > "Found an existing Google Doc with this title (id: `<id>`, created: `<date>`). Would you like to:

@@ -33,11 +33,18 @@ This skill expects a **path to a markdown file** that has a `gdoc_id` in its YAM
 4. **Update the Google Doc** — run:
    ```bash
    gws drive files update \
-     --params '{"fileId": "<gdoc_id>"}' \
+     --params '{"fileId": "<gdoc_id>", "supportsAllDrives": true}' \
      --upload <path-to-markdown-file> \
      --upload-content-type text/markdown
    ```
 
-5. **Report success** — show the user:
+5. **Re-apply pageless mode** — the overwrite resets document style, so re-apply pageless:
+   ```bash
+   gws docs documents batchUpdate \
+     --params '{"documentId": "<gdoc_id>"}' \
+     --json '{"requests": [{"updateDocumentStyle": {"documentStyle": {"documentFormat": {"documentMode": "PAGELESS"}}, "fields": "documentFormat"}}]}'
+   ```
+
+6. **Report success** — show the user:
    - Confirmation that the doc was updated
    - The Google Doc URL: `https://docs.google.com/document/d/<gdoc_id>/edit`

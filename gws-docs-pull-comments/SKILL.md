@@ -28,7 +28,7 @@ This skill expects a **path to a markdown file** that has a `gdoc_id` stored as 
 3. **Fetch comments** — run:
    ```bash
    gws drive comments list \
-     --params '{"fileId": "<gdoc_id>", "fields": "comments(id,author(displayName),content,quotedFileContent,resolved,createdTime,replies(author(displayName),content,createdTime))", "pageSize": 100}' \
+     --params '{"fileId": "<gdoc_id>", "fields": "comments(id,author(displayName),content,quotedFileContent,resolved,createdTime,replies(author(displayName),content,createdTime))", "pageSize": 100, "supportsAllDrives": true}' \
      --page-all
    ```
 
